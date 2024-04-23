@@ -29,11 +29,11 @@ The data format we understand so far is as follows:
 | Supply Chain ID | Identifies the unique group of customers involved in the mailing | 9 | 7 | "0000000" to "9999999" | Format is Numeric only. For barcode stamps it appears to always be "1017031". |
 | Item ID | Identifies the unique item within the Supply Chain ID. | 16 | 8 | "00000000" to "99999999" | This is basically the stamp ID, it is one digit longer than a normal Mailmark Item ID. Every Mailmark barcode is required to carry an ID so it can be uniquely identified for at least 90 days. Format is Numeric only. |
 | Value | ? | 24 | 5 | e.g. "00085" | Value of the stamp in pence | 
-| Week Of Production | The week the stamp was produced. | 29 | 6 | "250322" | Fairly sure this is in DDMMYY format. |
+| Week Of Production | The week the stamp was produced. | 29 | 6 | e.g. "250322" | Fairly sure this is in DDMMYY format. |
 | Campaign | ? | 35 | 2 | **"01"** - Normal stamps<br>**"02"** - Christmas stamps |  |
 | ? |  | 37 | 9 | | We have only seen this be whitespace. |
 | ? |  | 46 | 6 | | We have only seen this be whitespace. |
-| Signature? | ? | 52 | 16 | "2AB1FF0979D06BDC" | This looks like a hex-encoded signature of some form. |
+| Signature? | ? | 52 | 16 | e.g. "2AB1FF0979D06BDC" | This looks like a hex-encoded signature of some form. |
 | ? |  | 68 | 2 | "01" | Always "01". Perhaps a field terminator or signature version. |
 
 Mysteries
