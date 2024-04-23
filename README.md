@@ -33,10 +33,10 @@ The data format we understand so far is as follows:
 | Campaign | ? | 35 | 2 | **"01"** - Normal stamps<br>**"02"** - Christmas stamps |  |
 | ? |  | 37 | 9 | | We have only seen this be whitespace. |
 | ? |  | 46 | 6 | | We have only seen this be whitespace. |
-| Signature | ? | 52 | 16 | "2AB1FF0979D06BDC" | Only present on 70 byte barcodes. This looks like a hex-encoded signature of some form. |
+| Signature? | ? | 52 | 16 | "2AB1FF0979D06BDC" | This looks like a hex-encoded signature of some form. |
 | ? |  | 68 | 2 | "01" | Always "01". Perhaps a field terminator or signature version. |
 
 Mysteries
 ---
 * What is the signature. Is it a signature?
-* We do not know the purpose of the Mystery Bytes at offset 7/8
+* We do not know the purpose of the Mystery Bytes at offset 7/8, or the empty fields at 37/46
