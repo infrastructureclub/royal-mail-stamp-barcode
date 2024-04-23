@@ -7,6 +7,9 @@ The barcodes look like a 2D Type 29 Mailmark barcode, but the data cannot be par
 
 Either these stamps or the web service used to retrieve data about them appears to internally be referred to as "PennyBlack".
 
+Format
+---
+
 There are two lengths of code matched by the following regular expressions:
 | Length | Regex | 
 | ------ | ----- |
@@ -25,3 +28,9 @@ The data format we understand so far is as follows:
 | Item ID | Identifies the unique item within the Supply Chain ID. | 16 | 8 | "00000000" to "99999999" | This is basically the stamp ID, it is one digit longer than a normal Mailmark Item ID. Every Mailmark barcode is required to carry an ID so it can be uniquely identified for at least 90 days. Format is Numeric only. |
 | Week Of Production | The week the stamp was produced. | 29 | 6 | "250322" | Fairly sure this is in DDMMYY format. |
 | Campaign | ? | 35 | 2 | "01" | Possibly special christmas stamps etc? We have only seen "01". |
+| Signature | ? | 53 | 18 | Only present on 70 byte barcodes. This looks like a hex-encoded signature of some form. |
+
+Mysteries
+---
+* What is the signature. Is it a signature?
+* We do not know the purpose of the Mystery Bytes at offset 7/8
