@@ -28,7 +28,7 @@ The data format we understand so far is as follows:
 | Item ID | Identifies the unique item within the Supply Chain ID. | 16 | 8 | "00000000" to "99999999" | This is basically the stamp ID, it is one digit longer than a normal Mailmark Item ID. Every Mailmark barcode is required to carry an ID so it can be uniquely identified for at least 90 days. Format is Numeric only. |
 | Week Of Production | The week the stamp was produced. | 29 | 6 | "250322" | Fairly sure this is in DDMMYY format. |
 | Campaign | ? | 35 | 2 | "01" | Possibly special christmas stamps etc? We have only seen "01". |
-| Signature | ? | 53 | 18 | "2AB1FF0979D06BDC01" | Only present on 70 byte barcodes. This looks like a hex-encoded signature of some form. |
+| Signature | ? | 53 | 16 | "2AB1FF0979D06BDC" | Only present on 70 byte barcodes. This looks like a hex-encoded signature of some form. |
 
 Mysteries
 ---
