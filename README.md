@@ -20,15 +20,18 @@ The data format we understand so far is as follows:
 
 | Field Name | Definition | Start Position | Length | Legitimate Value(s) | Comment | 
 | ---------- | ---------- | ---------------|------- | ------------------- | ------- |
-| UPU Country ID | Identifies the UPU Country ID | 1 | 4 | "JGB<space>" | n/a |
-| Information Type ID | Identifies the Royal Mail Mailmark barcode payload for each product type. | 5 | 1 | "S" | S, for stamp. We think. |
-| Stamp Type | ? | 6 | 1 | "1" | We have only seen "1" in the wild. |
-| Mystery Bytes | No idea | 7 | 2 | | No idea what these mean. |
-| Supply Chain ID | Identifies the unique group of customers involved in the mailing | 9 | 7 | "0000000" to "9999999" | Format is Numeric only. |
+| UPU Country ID | Identifies the UPU Country ID | 1 | 4 | "JGB " | Note the space at the end |
+| Information Type ID | Identifies the Royal Mail Mailmark barcode payload for each product type. | 4 | 1 | "S" | S, for stamp. We think. |
+| Version | ? | 5 | 1 | "1" | Presumably the version of the barcode as in Mailmark |
+| Stamp Type | ? | 6 | 1 | "1", "9" | "1": standard postage stamps, "9": Make up Value stamps |
+|  | No idea | 7 | 2 | | No idea what these mean, they may be a more specific product ID |
+| Supply Chain ID | Identifies the unique group of customers involved in the mailing | 9 | 7 | "0000000" to "9999999" | Format is Numeric only. For barcode stamps it appears to always be "1017031". |
 | Item ID | Identifies the unique item within the Supply Chain ID. | 16 | 8 | "00000000" to "99999999" | This is basically the stamp ID, it is one digit longer than a normal Mailmark Item ID. Every Mailmark barcode is required to carry an ID so it can be uniquely identified for at least 90 days. Format is Numeric only. |
+| Value | ? | 24 | 5 | e.g. "00085" | Value of the stamp in pence | 
 | Week Of Production | The week the stamp was produced. | 29 | 6 | "250322" | Fairly sure this is in DDMMYY format. |
-| Campaign | ? | 35 | 2 | "01" | Possibly special christmas stamps etc? We have only seen "01". |
+| Campaign | ? | 35 | 2 | "01" | Normally "01". "02" for Christmas stamps. |
 | Signature | ? | 53 | 16 | "2AB1FF0979D06BDC" | Only present on 70 byte barcodes. This looks like a hex-encoded signature of some form. |
+|  | ? | 68 | 2 | "01" | Always "01". Perhaps a field terminator or signature version. |
 
 Mysteries
 ---
